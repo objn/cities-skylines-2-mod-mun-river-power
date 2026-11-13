@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "runtime_game_integration": "NOT INSTALLED / NOT TESTED",
+  "meshes": {
+    "LOD0": {
+      "triangles": 2604,
+      "vertices": 1566,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "uv_layers": 2
+    },
+    "LOD1": {
+      "triangles": 1244,
+      "vertices": 798,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "uv_layers": 2
+    },
+    "LOD2": {
+      "triangles": 472,
+      "vertices": 302,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "uv_layers": 2
+    }
+  },
+  "roundtrips": {
+    "Dam_Module75_LOD0.glb": {
+      "mesh_objects": 1,
+      "dimensions_metres_blender_xyz": [
+        75.0,
+        34.0,
+        22.079999923706055
+      ],
+      "material_count": 9
+    },
+    "Dam_Module75_LOD0.fbx": {
+      "mesh_objects": 1,
+      "dimensions_metres_blender_xyz": [
+        75.0,
+        34.0,
+        22.08000539901741
+      ],
+      "material_count": 9
+    },
+    "Dam_Assembly300_LOD0.glb": {
+      "mesh_objects": 4,
+      "dimensions_metres_blender_xyz": [
+        300.0,
+        34.0,
+        22.079999923706055
+      ],
+      "material_count": 9
+    },
+    "Dam_Assembly300_LOD0.fbx": {
+      "mesh_objects": 4,
+      "dimensions_metres_blender_xyz": [
+        300.0,
+        34.0,
+        22.08000539901741
+      ],
+      "material_count": 9
+    },
+    "Dam_Module75_Collision.glb": {
+      "mesh_objects": 3,
+      "dimensions_metres_blender_xyz": [
+        75.0,
+        34.0,
+        17.0
+      ],
+      "material_count": 1
+    },
+    "Dam_Module75_Collision.fbx": {
+      "mesh_objects": 3,
+      "dimensions_metres_blender_xyz": [
+        75.0,
+        34.0,
+        17.000002769651473
+      ],
+      "material_count": 1
+    }
+  }
+}

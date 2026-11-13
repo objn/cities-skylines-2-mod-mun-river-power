@@ -1,0 +1,32 @@
+# Local tool caches and editor files
+.dotnet/
+.vs/
+.vscode/
+*.user
+*.suo
+*.userprefs
+
+# Build and test output
+**/obj/
+**/bin/
+dist/
+artifacts/
+*.log
+*.tmp
+*.bak
+
+# Python and Blender working files
+__pycache__/
+.pytest_cache/
+*.pyc
+*.blend1
+*.blend2
+
+# Local release staging and superseded archives. Keep the latest usable mod.
+releases/MunRiverPower/
+releases/*.zip
+!releases/MunRiverPower-0.17.6.zip
+
+# Windows metadata
+Thumbs.db
+Desktop.ini

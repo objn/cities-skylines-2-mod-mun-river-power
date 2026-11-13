@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework></PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../src/MunRiverPower/PlacementLedger.cs" Link="PlacementLedger.cs" />
+    <Compile Include="../../src/MunRiverPower/LayoutCompatibility.cs" Link="LayoutCompatibility.cs" />
+    <Compile Include="../../src/MunRiverPower/HydroSpecification.cs" Link="HydroSpecification.cs" />
+    <Compile Include="../../src/MunRiverPower/SpillwayControl.cs" Link="SpillwayControl.cs" />
+  </ItemGroup>
+</Project>

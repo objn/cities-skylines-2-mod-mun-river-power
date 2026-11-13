@@ -1,0 +1,134 @@
+{
+  "asset": "Mun River Modern Dam",
+  "version": "1.1",
+  "units": "metres",
+  "export_up_axis": "Y",
+  "nominal_module_length": 75,
+  "nominal_assembly_length": 300,
+  "structural_crest_height": 17,
+  "design": "Original modern low-head dam inspired by the user reference, not a survey replica.",
+  "status": "Standalone editable model. NOT imported into the game or installed mod.",
+  "upgrades": {
+    "fish_passage": {
+      "asset": "FishPassage_Upgrade_LOD0",
+      "triangles": 996,
+      "bounds_blender_z_up": {
+        "min": [
+          -14.850000381469727,
+          -36.5,
+          5.401181697845459
+        ],
+        "max": [
+          -4.099999904632568,
+          62.5,
+          15.700000762939453
+        ]
+      },
+      "description": "Side-mounted pool-and-slot bypass with alternating baffles, two basins, access walk and handrails."
+    },
+    "automatic_spillway": {
+      "asset": "AutomaticSpillway_Upgrade_LOD0",
+      "triangles": 504,
+      "bounds_blender_z_up": {
+        "min": [
+          1.5,
+          -10.34999942779541,
+          16.899999618530273
+        ],
+        "max": [
+          73.25,
+          -5.450000286102295,
+          22.899999618530273
+        ]
+      },
+      "description": "Four crest flap leaves with hydraulic actuators, level sensor mast and control cabinet."
+    }
+  },
+  "excluded": [
+    "external powerhouse building",
+    "roads",
+    "powerlines"
+  ],
+  "lods": {
+    "LOD0": {
+      "vertices": 1566,
+      "triangles": 2604,
+      "bounds_blender_z_up": {
+        "min": [
+          0.0,
+          -12.0,
+          0.0
+        ],
+        "max": [
+          75.0,
+          22.0,
+          22.079999923706055
+        ]
+      }
+    },
+    "LOD1": {
+      "vertices": 798,
+      "triangles": 1244,
+      "bounds_blender_z_up": {
+        "min": [
+          0.0,
+          -12.0,
+          0.0
+        ],
+        "max": [
+          75.0,
+          22.0,
+          22.079999923706055
+        ]
+      }
+    },
+    "LOD2": {
+      "vertices": 302,
+      "triangles": 472,
+      "bounds_blender_z_up": {
+        "min": [
+          0.0,
+          -12.0,
+          0.0
+        ],
+        "max": [
+          75.0,
+          22.0,
+          22.079999923706055
+        ]
+      }
+    }
+  },
+  "assembly": {
+    "vertices": 6264,
+    "triangles": 10416,
+    "bounds_blender_z_up": {
+      "min": [
+        0.0,
+        -12.0,
+        0.0
+      ],
+      "max": [
+        300.0,
+        22.0,
+        22.079999923706055
+      ]
+    }
+  },
+  "collision": {
+    "vertices": 24,
+    "triangles": 36,
+    "bounds_blender_z_up": {
+      "min": [
+        0.0,
+        -12.0,
+        0.0
+      ],
+      "max": [
+        75.0,
+        22.0,
+        17.0
+      ]
+    }
+  }
+}

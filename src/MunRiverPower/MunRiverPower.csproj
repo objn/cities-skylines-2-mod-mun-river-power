@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>MunRiverPower</AssemblyName>
+    <Version>0.17.6</Version>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <AutomaticallyUseReferenceAssemblyPackages>false</AutomaticallyUseReferenceAssemblyPackages>
+    <GamePath Condition="'$(GamePath)' == ''">F:\Cities Skylines II</GamePath>
+    <ManagedPath>$(GamePath)\Cities2_Data\Managed</ManagedPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>..\..\dist\MunRiverPower\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Game"><HintPath>$(ManagedPath)\Game.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.Entities"><HintPath>$(ManagedPath)\Unity.Entities.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.Collections"><HintPath>$(ManagedPath)\Unity.Collections.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.Mathematics"><HintPath>$(ManagedPath)\Unity.Mathematics.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(ManagedPath)\UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule"><HintPath>$(ManagedPath)\UnityEngine.JSONSerializeModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Colossal.Core"><HintPath>$(ManagedPath)\Colossal.Core.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Colossal.UI.Binding"><HintPath>$(ManagedPath)\Colossal.UI.Binding.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Colossal.Logging"><HintPath>$(ManagedPath)\Colossal.Logging.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Colossal.Localization"><HintPath>$(ManagedPath)\Colossal.Localization.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Colossal.IO.AssetDatabase"><HintPath>$(ManagedPath)\Colossal.IO.AssetDatabase.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Colossal.AssetPipeline"><HintPath>$(ManagedPath)\Colossal.AssetPipeline.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Newtonsoft.Json"><HintPath>$(ManagedPath)\Newtonsoft.Json.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Colossal.Mathematics"><HintPath>$(ManagedPath)\Colossal.Mathematics.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Colossal.Serialization.Entities"><HintPath>$(ManagedPath)\Colossal.Serialization.Entities.dll</HintPath><Private>false</Private></Reference>
+    <EmbeddedResource Include="..\..\assets\ModernDam\FishPassage_Upgrade_LOD0.glb" LogicalName="MunRiverPower.FishPassage_Upgrade_LOD0.glb" />
+    <EmbeddedResource Include="..\..\assets\ModernDam\AutomaticSpillway_Upgrade_LOD0.glb" LogicalName="MunRiverPower.AutomaticSpillway_Upgrade_LOD0.glb" />
+    <EmbeddedResource Include="..\..\assets\ModernDam\Dam_Module75_LOD0.glb" LogicalName="MunRiverPower.Dam_Module75_LOD0.glb" />
+  </ItemGroup>
+</Project>

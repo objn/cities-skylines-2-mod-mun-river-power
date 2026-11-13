@@ -1,53 +1,63 @@
 # Mun River Power 0.17.6
 
-เพิ่มกังหัน 34 MW ทุกความยาวครบ 75 เมตร: 150 ม. = 68 MW, 300 ม. = 136 MW, 375 ม. = 170 MW ระยะ 75 เมตรเป็นสมมติฐานจัดวางสำหรับม็อดจาก 300/4 ไม่ใช่ระยะห่างเครื่องจริงที่ยืนยันแล้ว
+Add 34 MW of installed turbine capacity for every complete 75 m of dam: 150 m = 68 MW, 300 m = 136 MW, and 375 m = 170 MW. The 75 m interval is a mod layout assumption derived from 300/4; it is not a confirmed real turbine spacing.
 
-ค่าก่อสร้างและค่าบำรุง = ค่าเขื่อนเดิมที่ความยาว/ความสูงเดียวกัน × min(1, พิกัดม็อด / พิกัดเขื่อนเดิม) เช่น 136/272 MW ใช้ราคา 50% ทั้งสองรายการ คิดจากพิกัดติดตั้ง ไม่เปลี่ยนตามน้ำไหลหรือไฟที่ผลิตได้ในขณะนั้น เศษความยาวที่ยังไม่ครบเครื่องไม่เพิ่มพิกัด ช่วงสั้นกว่า 75 ม. ไม่มีเครื่องแต่ยังเสียค่างานโยธาเดิม
+Construction cost and upkeep equal the original dam's values at the same length and height multiplied by `min(1, mod rating / original dam rating)`. For example, 136/272 MW costs 50% as much in both categories. The calculation uses installed capacity, regardless of current water flow or output. An incomplete 75 m interval adds no capacity. A dam shorter than 75 m has no turbines but still incurs the original civil works cost.
 
-## ติดตั้ง
+## Preview
 
-ปิดเกม แตก MunRiverPower-0.17.6.zip แล้วเปิด Install.cmd ตรวจ Version: 0.17.6.0 เปิดเมืองทดลองและให้เกมเดินระบบ อาคารม็อดเก่าจะคำนวณพิกัดใหม่ตามความยาวจริง เขื่อนปกติไม่ถูกปรับ
+![Render of the 300 m modular dam](assets/ModernDam/Preview_300m.png)
 
-รุ่นนี้ให้เครื่องมือวางใช้ prefab ของม็อด ตัดชิ้นกำแพงคอนกรีตเดิมออกจากองค์ประกอบภาพเฉพาะแนวเขื่อนของม็อด การตัดชิ้นนั้นทำให้ผิวถนนเดิมหายไปด้วย จึงเพิ่มผิวถนน ขอบทาง และเส้นจราจรในภาพของม็อด รุ่น 0.17.3 ใช้วัสดุถนนของเกมกับตาข่ายที่สร้างเองและทำให้ภาพยืดผิดรูป รุ่นนี้ถอดวัสดุนั้นออก ใช้ HDRP Lit ที่ไม่ดัดจุดตาข่ายและปรับสีให้ใกล้ถนนเกม เครือข่ายถนนของเกมยังอยู่สำหรับการเชื่อมต่อ การเดินรถ และการลบ ผลในเกมยังต้องตรวจด้วยภาพจริง
+*300 m dam model. This is a Blender render, not an in-game screenshot.*
 
-ค่าบำรุงแต่ละสัดส่วนใช้ข้อมูลส่วนตัวของม็อด และเก็บรายการไว้ที่ %USERPROFILE%/AppData/LocalLow/Colossal Order/Cities Skylines II/ModsData/MunRiverPower/economic-profiles.json **สำรองโฟลเดอร์ ModsData/MunRiverPower ไปพร้อมเซฟ โดยเฉพาะเมื่อย้ายเครื่อง** อย่าลบระหว่างใช้งานเมืองที่สร้างด้วยรุ่นนี้
+![Render of the 300 m dam with upgrades installed](assets/ModernDam/Preview_Upgrades_Installed_300m.png)
 
-## Automatic Spillway — ทางระบายน้ำล้นอัตโนมัติ
+*Model preview with upgrades installed; placement and appearance in the game still need verification.*
 
-รุ่น 0.17.6 ขยับชุด Spillway ทั้งแนวให้พ้นช่องรถอย่างน้อย 0.65 ม. ตามขอบโมเดล และเลื่อนชิ้นอัปเกรดที่ยึดกับอาคารไปทางข้างเขื่อนอีก 5 ม. ปรับสีถนนให้ใกล้ถนนเกมที่ต่อเข้ามามากขึ้น ต้องตรวจภาพจริงในเกม
+## Installation
 
-- เริ่มระบายเมื่อระยะก่อนน้ำล้นเหลือไม่เกิน 0.5 ม. หยุดเมื่อกลับถึงประมาณ 1.0 ม. ใช้จุดเปิด/ปิดแยกกันและค่อยลดการระบายใกล้เป้าหมาย
-- ส่งน้ำจากฝั่งกักเก็บไปฝั่งท้ายน้ำด้วยคำสั่งหัก/เติมคู่กัน ไม่เพิ่มพิกัดกังหัน และไม่แก้ระดับน้ำทะเลหรือสร้างแหล่งน้ำถาวรในเมือง
-- รอเมื่อท้ายน้ำสูง หรือจุดรับ/ปล่อยไม่เปียกพอ ปิดอัปเกรดแล้วหยุดคำสั่งระบายเสริม
-- ราคาทดลอง ₡100,000 ค่าบำรุงเพิ่ม ₡1,000/เดือน หนึ่งชุดต่อโรง เป็นอัปเกรดภายในอาคาร พร้อมโมเดลประตูน้ำ 3D ของม็อด
-- ระยะเป็นค่าประมาณจากแนวสันและผิวน้ำจำลอง แสดงละเอียด 0.1 ม. ระหว่าง -5 ถึง 20 ม.; นอกช่วงแสดงว่าต่ำ/สูงกว่าช่วงนี้ ไม่ใช้ความลึกฐานรากหรือกำลัง MW เป็นระยะน้ำ
+Close the game, extract `MunRiverPower-0.17.6.zip`, and run `Install.cmd`. Check that the version is `0.17.6.0`. Open a test city and let the simulation run. Existing mod powerhouses recalculate their capacity from their actual length. Vanilla dams are unaffected.
 
-**ผ่านการทดสอบกติกาและตรวจคำสั่ง/API แล้ว ยังไม่ทดสอบการเคลื่อนน้ำจริง การแสดงสถานะ และโหลดเซฟของ Spillway ในเกม** โปรดเริ่มจากสำเนาเมือง ตาม TESTING.th.md คำสั่งหัก/เติมตั้งให้เท่ากัน แต่ยังต้องตรวจความคลาดเคลื่อนจากระบบน้ำจริง เช่น การหนีบค่าที่น้ำตื้น/ขอบพื้นที่
+The placement tool now uses the mod's prefab. For mod dam segments, the original concrete wall mesh is removed from the visual composition. Because that also removes the original road surface, the mod draws its own road surface, curbs, and lane markings. Version 0.17.3 used the game's road material on custom meshes, which caused visual distortion. This version uses HDRP Lit without mesh deformation and adjusts the color to resemble the connected game road. The game's road network still handles connections, traffic, and removal. The appearance still needs in-game verification.
 
-## Fish Passage — ทางผ่านปลา
+Each upkeep ratio has a private mod profile stored in `%USERPROFILE%/AppData/LocalLow/Colossal Order/Cities Skylines II/ModsData/MunRiverPower/economic-profiles.json`. **Back up `ModsData/MunRiverPower` with your save, especially when moving to another computer.** Do not delete it while using a city created with this version.
 
-เปิดหน้าข้อมูล Mun River Powerhouse ที่สร้างแล้ว เลือกอัปเกรด Fish Passage แล้วคลิกยืนยันกับโรงไฟฟ้า ติดตั้งได้หนึ่งชุดต่อโรง ใช้ได้กับโรงม็อดเก่าและโรงใหม่ รวมถึงโรงที่ใช้ค่าบำรุงต่างสัดส่วน
+## Automatic Spillway
 
-- Well-being +2 และรัศมี 4,000 เมตรที่ประสิทธิภาพ 100% เป็นผลแบบ Absolute ไม่ใช่ 2% ของความสุข
-- ใช้ผลพื้นที่ของเกม จึงแรงที่สุดใกล้โรงและลดลงจนเป็นศูนย์ที่ขอบรัศมี ไม่ใช่ +2 เท่ากันทุกบ้าน ประสิทธิภาพโรงไฟฟ้าสามารถปรับทั้งความแรงและรัศมีตามระบบเดิม
-- ค่าติดตั้งทดลอง ₡25,000 และค่าบำรุงเพิ่ม ₡500/เดือน เป็นค่าดุลเกม ไม่มีการอ้างต้นทุนจริง
-- เป็นอัปเกรดภายในอาคารผ่านเมนูเกม มีโมเดลทางผ่านปลา 3D ของม็อด และไม่เพิ่มจำนวนกังหันหรือกำลังพิกัด
-- ปิด/ถอนอัปเกรดแล้วผลพื้นที่ควรถูกยกเลิกตามเกม บันทึกการติดตั้งด้วยระบบอัปเกรดเดิม
+Version 0.17.6 moves the entire spillway assembly clear of the vehicle lane, leaving at least 0.65 m between the model edge and the lane edge. The building-attached upgrade pieces are shifted another 5 m toward the side of the dam. The road color has also been adjusted to better match the connected game road. These changes need visual verification in the game.
 
-## การทดสอบ
+- Releases water when freeboard drops to 0.5 m or less and stops when it returns to about 1.0 m. Separate opening and closing thresholds prevent rapid toggling, and release tapers near the target.
+- Sends paired removal and addition commands from the reservoir to the downstream side. It adds no turbine capacity and does not change sea level or create a permanent water source.
+- Waits when downstream water is too high or the intake/outlet is not wet enough. Disabling the upgrade stops the extra release commands.
+- Experimental price: ₡100,000 plus ₡1,000/month upkeep. One internal building upgrade per powerhouse, with a custom 3D gate model.
+- Freeboard is an estimate based on the simulated crest and water surface. The display has 0.1 m precision from -5 to 20 m and shows an out-of-range message beyond that. Foundation depth and MW capacity are not water-distance measures.
 
-Build และการอ้างอิง API เกม 1.6.2f1 ผ่านแล้ว ผู้ใช้ได้ทดสอบภาพโมเดลในเกมรุ่นก่อนหน้า รุ่น 0.17.6 ยังรอทดสอบตำแหน่ง Spillway และสีถนน ส่วนการคิดเงินจริง/วาง/โหลดเซฟให้ตรวจตาม TESTING.th.md
+**The control rules and API commands have been checked, but actual water movement, status display, and save loading have not yet been tested in-game.** Start with a copy of a city and follow [TESTING.md](TESTING.md). Removal and addition commands use equal values, but the game's water simulation may still introduce differences, for example through clamping in shallow water or at map edges.
 
-- ระบบถนนและการชนยังเป็นของเกม; โมเดลแสดงผล 75 ม. วางตามแนวเขื่อนม็อด ความสูงจากฐาน 17 เมตรเป็นข้อมูลอ้างอิงปากมูล ไม่ใช่ส่วนต่างระดับน้ำ
-- ต้องมีส่วนต่างระดับน้ำอย่างน้อย 3 ม. น้ำไหลและประสิทธิภาพการทำงานเป็นตัวกำหนดกำลังจริง สมมติประสิทธิภาพกังหัน 90%
-- ระบบนับเครื่องเป็นตัวเลข ยังไม่ได้เพิ่มโมเดลเครื่องทีละชุดให้มองเห็นขณะลาก
-- พรีวิวแสดงค่าประมาณการผลิต / พิกัดติดตั้งตามจำนวนกังหัน เช่น 401 ม. = 5 เครื่อง รวม 170 MW แม้ขุดพื้นให้ลึกขึ้น ค่าฝั่งผลิตไม่เกินพิกัด หลังสร้างน้ำและประสิทธิภาพเปลี่ยนได้ ราคาวางยังปรับจากใบคิดเงินจริงของเกม
-- ราคาเป็นการปรับสัดส่วนในเศรษฐกิจเกม ไม่ใช่ต้นทุนก่อสร้างในประเทศไทย
+## Fish Passage
 
-รายละเอียด: SPECIFICATION.th.md; ตรวจปัญหาด้วย Collect-Diagnostics.ps1
+Open the information panel for an existing Mun River Powerhouse, choose Fish Passage, and confirm the upgrade on that powerhouse. One can be installed per powerhouse, including older mod buildings and buildings with different upkeep ratios.
 
-## พัฒนา
+- Well-being +2 and a 4,000 m radius at 100% efficiency. The effect uses an absolute value, not 2% of happiness.
+- The game's area effect is strongest near the powerhouse and falls to zero at the radius boundary. It does not give every household +2. Powerhouse efficiency can modify both strength and radius under the game's normal rules.
+- Experimental installation cost ₡25,000 and additional upkeep ₡500/month are game balance values, not real-world cost estimates.
+- This is an internal building upgrade through the game menu, with a custom 3D fish passage model. It adds no turbines or installed capacity.
+- Disabling or removing the upgrade should remove its area effect according to game rules. The normal upgrade system records its installation.
 
-ใช้ Windows, .NET SDK 10.0.401 และไฟล์เกม Cities: Skylines II เวอร์ชันที่ตรงกับ API ที่ม็อดอ้างอิง รัน `./Build.ps1 -GamePath 'F:\Cities Skylines II'` โดยเปลี่ยนพาธให้ตรงกับเครื่อง แล้วรัน `./tools/Verify-Package.ps1 -GamePath 'F:\Cities Skylines II'` เพื่อตรวจแพ็กใน `dist/MunRiverPower` การทดสอบส่วนคำนวณใช้ `dotnet run --project tests/PlacementLedgerChecks/PlacementLedgerChecks.csproj -c Release`
+## Testing status
 
-ซอร์สโมเดล Blender และไฟล์ GLB ที่ใช้สร้างม็อดอยู่ใน `assets/ModernDam/` สคริปต์สร้างโมเดลอยู่ใน `tools/create_modern_dam.py` ไฟล์ ZIP รุ่นล่าสุดอยู่ใน `releases/` ส่วนไฟล์ build, แคช และรายงานทดสอบถูกละเว้นจาก Git
+The build and API references for game version 1.6.2f1 pass. The user tested model visuals in an earlier version. Version 0.17.6 still needs in-game checks of spillway placement and road color; use [TESTING.md](TESTING.md) to check actual charges, placement, and save loading.
+
+- The game's road and collision systems remain in use. The 75 m visual modules follow the mod dam line. The Pak Mun reference height of 17 m from the foundation is not the operating water head.
+- Generation requires at least 3 m of water head. Flow and operating efficiency determine actual output. Assumed turbine efficiency is 90%.
+- Turbines are counted numerically; individual turbine models are not yet added or removed during dragging.
+- The preview shows estimated generation and installed capacity for the turbine count. For example, 401 m gives five turbines and 170 MW; digging deeper does not raise the generation side above the rating. Water and efficiency may change after construction. The placement price follows the game's actual cost calculation.
+- The price adjustment is for game balance and does not represent construction costs in Thailand.
+
+See [SPECIFICATION.md](SPECIFICATION.md) for details. Use `Collect-Diagnostics.ps1` to collect information about a problem.
+
+## Development
+
+Use Windows, .NET SDK 10.0.401, and a Cities: Skylines II installation matching the API references. Run `./Build.ps1 -GamePath 'F:\Cities Skylines II'` with your local game path, then `./tools/Verify-Package.ps1 -GamePath 'F:\Cities Skylines II'` to check `dist/MunRiverPower`. Run the calculation checks with `dotnet run --project tests/PlacementLedgerChecks/PlacementLedgerChecks.csproj -c Release`.
+
+Blender model sources and GLB exports are in `assets/ModernDam/`, with the generation script at `tools/create_modern_dam.py`. The latest ZIP is in `releases/`. Build output, caches, and test reports are excluded from Git.

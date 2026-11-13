@@ -168,11 +168,11 @@ if (-not ($guardCheck.Body.Instructions | Where-Object { $_.Operand -and $_.Oper
 if (-not ($guardCheck.Body.Instructions | Where-Object { $_.OpCode.Name -eq 'ldsfld' -and $_.Operand.ToString() -match 'WeirFactory::RegisteredRoot' })) {
     throw 'Placement must use the mod dam root.'
 }
-$expected = @('MunRiverPower.dll','MunRiverPower.pdb','MunRiverPower.dll.config','README.md','TESTING.th.md','SPECIFICATION.th.md','Install.cmd','Install-Local.ps1','Collect-Diagnostics.ps1','verification.json')
+$expected = @('MunRiverPower.dll','MunRiverPower.pdb','MunRiverPower.dll.config','README.md','TESTING.md','SPECIFICATION.md','Install.cmd','Install-Local.ps1','Collect-Diagnostics.ps1','verification.json')
 foreach ($file in Get-ChildItem -LiteralPath $package -File) {
     if ($file.Name -notin $expected) { throw "Unexpected packaged file: $($file.Name)" }
 }
-foreach ($required in @('MunRiverPower.dll','README.md','TESTING.th.md','Install.cmd','Install-Local.ps1','Collect-Diagnostics.ps1')) {
+foreach ($required in @('MunRiverPower.dll','README.md','TESTING.md','Install.cmd','Install-Local.ps1','Collect-Diagnostics.ps1')) {
     if (-not (Test-Path -LiteralPath (Join-Path $package $required))) { throw "Missing package file: $required" }
 }
 $report = [ordered]@{

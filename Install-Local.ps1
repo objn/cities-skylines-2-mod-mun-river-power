@@ -9,7 +9,7 @@ if (-not (Test-Path -LiteralPath $source)) {
 }
 if (-not (Test-Path -LiteralPath $source)) { throw 'Run Build.ps1 first.' }
 $null = New-Item -ItemType Directory -Path $Destination -Force
-foreach ($name in @('MunRiverPower.dll', 'MunRiverPower.pdb', 'README.md', 'SPECIFICATION.th.md')) {
+foreach ($name in @('MunRiverPower.dll', 'MunRiverPower.pdb', 'README.md', 'SPECIFICATION.md')) {
     $file = Join-Path $package $name
     if (Test-Path -LiteralPath $file) { Copy-Item -LiteralPath $file -Destination (Join-Path $Destination $name) -Force }
 }
